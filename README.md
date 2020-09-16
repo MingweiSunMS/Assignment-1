@@ -54,6 +54,56 @@ if ubereat getOrderInfo
 			ubereat.refund(poppy);
 else ubereat doNotGetOrderInfo
 
+-------------------------------------------------------------------------------------------------------------------------------
+#2 pet adoption system
+
+customer:
+	data: name, loginCredentials, Address, emailAddress, applicationForm
+	Behaviors: login, submitApplicaiton, acceptAdoption, requestCancelApplication, search, requestPickup
+
+AdoptionSystem:
+	data: puppies, AdoptCenter
+	behaviors: sendApplicationComformation, submitApplication, sendToAdoptionCenter, SendPickUpComformation, SendCancelationComformation
+
+Puppy:
+	data: brand, size, color
+	Behaviors:
+
+Adoptcenter:
+	data: applicationReviewer
+	Behavior: sendApplicationToReviewer, selectReviewer, sendReminder
+
+applicationReviewer:
+	data: name
+	Behavior: reviewApplication, sendApproveNotice, sendDeniedNotice, alllocateReviewer
+
+
+
+Customer poppy;
+AdoptionSystem petsfinder;
+Adoptcenter akchome
+poppy.login(loginCredentials);
+Poppy chihuahua = poppy.search(brand, size, color);
+if petsfinder isInStock
+	poppy.submitApplicaiton(chihuahua);
+	petsfinder.sendApplicationComformation(poppy.emailAddress);
+	if poppy change her mind
+		poppy.requestCancelApplication(chihuahua);
+		petsfinder.sendCancelationComformation(chihuahua);
+	else
+		petsfinder.sendToaAdoptionCenter(chihuahua, akchome);
+		if akchome receive this applicaiton
+			akchome.sendApplicationToReviewer;
+			applicationReviewer.reviewApplication(chihuahua)
+			applicationReviewer mark = akchome.selectReviewer;
+			if mark approve the application
+				mark.sendApproveNotice("******");
+			else mark denied the application
+				mark.sendDeniedNotice(00000000);
+		else
+			akchome.sendReminder
+else petsfinder outOfStock
+			
 -----------------------------------------------------------------------------------------------------------	
 #3 Course Management
 Student:
@@ -90,7 +140,7 @@ if canvas getSubmittedAssignment:
 		Mark.sentGradeToCouragementSystem
 else assignment has no submission
 
-
+---------------------------------------------------------------------------------------------------------------------------------------
 
 
 
